@@ -4,13 +4,24 @@ import pandas as pd
 
 bib_file = ''
 bibtex = {
-    'type1': '@book',
-    'type2': '@article',
-    'citation_key': '',
-    'author': 'author = ',
-    'title': 'title = ',
-    'year': 'year = ',
-    'publisher': 'publisher = '
+    'book': {
+        'type': '@book',
+        'title': 'title =',
+        'author': 'author = ',
+        'year': 'year = ',
+        'place': 'address = ',
+        'publisher': 'publisher = ',
+        'url': 'url ='
+    },
+    'article': {
+        'type': '@article',
+        'title': 'title =',
+        'author': 'author = ',
+        'year': 'year = ',
+        'journal': 'journal =',
+        'number': 'number = ',
+        'url': 'url ='
+    }
 }
 
 # load CSV
