@@ -32,25 +32,25 @@ data_clean = data[columns]
 # dataframe manipulation to string
 
 for i in range(data_clean.shape[0]):
-    if data_clean.iat[i, 0] in ['libro', 'informe', 'cartilla']:
+    if data_clean.at[i, 'tipo_doc'] in ['libro', 'informe', 'cartilla']:
         bib_file += str(bibtex['book']['type'])
     else:
         bib_file += str(bibtex['article']['type'])
-    bib_file += f"""{{{data_clean.iat[i, 2].split()[0].lower()}{data_clean.iat[i, 3]},
-    title = "{data_clean.iat[i, 1]}",
-    author = "{data_clean.iat[i, 2]}",
-    year = {data_clean.iat[i, 3]},
+    bib_file += f"""{{{data_clean.at[i, 'autor'].split()[0].lower()}{data_clean.at[i, 'anio']},
+    title = "{data_clean.at[i, 'titulo']}",
+    author = "{data_clean.at[i, 'autor']}",
+    year = {data_clean.at[i, 'anio']},
     """
-    if data_clean.iat[i, 0] in ['libro', 'informe', 'cartilla']:
-        bib_file += f"""place = "{data_clean.iat[i, 4]}",
-    publisher = "{data_clean.iat[i, 5]}",
+    if data_clean.at[i, 'tipo_doc'] in ['libro', 'informe', 'cartilla']:
+        bib_file += f"""place = "{data_clean.at[i, 'departamento']}",
+    publisher = "{data_clean.at[i, 'editorial_institucion']}",
     """
     else:
-        bib_file += f"""journal = "{data_clean.iat[i, 6]}",
-    number = {data_clean.iat[i, 7]},
+        bib_file += f"""journal = "{data_clean.at[i, 'nombre_revista_compilacion']}",
+    number = {data_clean.at[i, 'numero_revista']},
     """
-    bib_file += f"""url = "{data_clean.iat[i, 8]}",
-    keywords = "{data_clean.iat[i, 9]}"
+    bib_file += f"""url = "{data_clean.at[i, 'url']}",
+    keywords = "{data_clean.at[i, 'temas']}"
 }}
 """
 
